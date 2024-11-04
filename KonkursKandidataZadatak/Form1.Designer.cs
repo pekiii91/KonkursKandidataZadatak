@@ -59,7 +59,7 @@
             this.btnIzlaz.Name = "btnIzlaz";
             this.btnIzlaz.Size = new System.Drawing.Size(104, 48);
             this.btnIzlaz.TabIndex = 3;
-            this.btnIzlaz.Text = "Izadji";
+            this.btnIzlaz.Text = "Izlaz";
             this.btnIzlaz.UseVisualStyleBackColor = true;
             this.btnIzlaz.Click += new System.EventHandler(this.btnIzlaz_Click);
             // 
@@ -74,7 +74,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Konkurs Kandidata";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

@@ -295,7 +295,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "IzmeniKandidata";
-            this.Text = "IzmeniKandidata";
+            this.Text = "Izmeni Kandidata";
             this.Load += new System.EventHandler(this.IzmeniKandidata_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOcena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).EndInit();

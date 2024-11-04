@@ -90,18 +90,21 @@
             // 
             // labelImePrezime
             // 
+            this.labelImePrezime.AutoEllipsis = true;
             this.labelImePrezime.AutoSize = true;
             this.labelImePrezime.Location = new System.Drawing.Point(41, 23);
+            this.labelImePrezime.MaximumSize = new System.Drawing.Size(300, 300);
             this.labelImePrezime.Name = "labelImePrezime";
-            this.labelImePrezime.Size = new System.Drawing.Size(140, 48);
+            this.labelImePrezime.Size = new System.Drawing.Size(136, 32);
             this.labelImePrezime.TabIndex = 8;
-            this.labelImePrezime.Text = "Pretraga Kandidata: \r\n(Ime, Prezime ili JMBG\r\n)";
+            this.labelImePrezime.Text = "Pretraga Kandidata: \r\nIme, Prezime ili JMBG\r\n";
             // 
             // textBoxPretraga
             // 
-            this.textBoxPretraga.Location = new System.Drawing.Point(270, 33);
+            this.textBoxPretraga.Location = new System.Drawing.Point(254, 25);
+            this.textBoxPretraga.Multiline = true;
             this.textBoxPretraga.Name = "textBoxPretraga";
-            this.textBoxPretraga.Size = new System.Drawing.Size(303, 22);
+            this.textBoxPretraga.Size = new System.Drawing.Size(303, 30);
             this.textBoxPretraga.TabIndex = 9;
             this.textBoxPretraga.TextChanged += new System.EventHandler(this.textBoxPretraga_TextChanged);
             // 
@@ -170,7 +173,7 @@
             this.Controls.Add(this.dataGridViewKandidati);
             this.MaximizeBox = false;
             this.Name = "PrikazKandidata";
-            this.Text = "PrikazKandidata";
+            this.Text = "Prikaz Kandidata";
             this.Load += new System.EventHandler(this.PrikazKandidata_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKandidati)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

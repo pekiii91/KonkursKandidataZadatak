@@ -240,7 +240,7 @@
             // 
             // buttonDodajKandidata
             // 
-            this.buttonDodajKandidata.Location = new System.Drawing.Point(508, 427);
+            this.buttonDodajKandidata.Location = new System.Drawing.Point(559, 397);
             this.buttonDodajKandidata.Name = "buttonDodajKandidata";
             this.buttonDodajKandidata.Size = new System.Drawing.Size(97, 56);
             this.buttonDodajKandidata.TabIndex = 23;
@@ -273,7 +273,7 @@
             // 
             this.richTextBoxDodatniLinkovi.Location = new System.Drawing.Point(204, 236);
             this.richTextBoxDodatniLinkovi.Name = "richTextBoxDodatniLinkovi";
-            this.richTextBoxDodatniLinkovi.Size = new System.Drawing.Size(246, 61);
+            this.richTextBoxDodatniLinkovi.Size = new System.Drawing.Size(246, 76);
             this.richTextBoxDodatniLinkovi.TabIndex = 35;
             this.richTextBoxDodatniLinkovi.Text = "";
             // 
@@ -281,7 +281,7 @@
             // 
             this.pictureBoxSlika.Location = new System.Drawing.Point(686, 242);
             this.pictureBoxSlika.Name = "pictureBoxSlika";
-            this.pictureBoxSlika.Size = new System.Drawing.Size(232, 211);
+            this.pictureBoxSlika.Size = new System.Drawing.Size(258, 211);
             this.pictureBoxSlika.TabIndex = 36;
             this.pictureBoxSlika.TabStop = false;
             // 

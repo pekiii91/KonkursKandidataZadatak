@@ -36,6 +36,8 @@ namespace KonkursKandidataZadatak
 
             dataGridViewKandidati.RowPrePaint += dataGridViewKandidati_RowPrePaint;
             dataGridViewKandidati.CellEndEdit += dataGridViewKandidati_CellEndEdit_1;
+
+
         }
 
         //Metoda, pretraga po imenu, prezimenu i JMBG

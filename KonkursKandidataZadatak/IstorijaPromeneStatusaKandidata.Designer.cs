@@ -87,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "IstorijaPromeneStatusaKandidata";
-            this.Text = "IstorijaPromeneStatusaKandidata";
+            this.Text = "Istorija Promene Statusa Kandidata";
             this.Load += new System.EventHandler(this.IstorijaPromeneStatusaKandidata_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIstorija)).EndInit();
             this.ResumeLayout(false);

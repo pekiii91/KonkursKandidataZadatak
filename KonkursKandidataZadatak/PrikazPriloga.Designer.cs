@@ -51,7 +51,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
             this.Name = "PrikazPriloga";
-            this.Text = "PrikazPriloga";
+            this.Text = "Prikaz Priloga - CV";
             this.Load += new System.EventHandler(this.PrikazPriloga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
