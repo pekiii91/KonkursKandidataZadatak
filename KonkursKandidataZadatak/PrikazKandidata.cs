@@ -21,7 +21,7 @@ namespace KonkursKandidataZadatak
 
         private void PrikazKandidata_Load(object sender, EventArgs e)
         {
-
+            FormSize();
         }
         public PrikazKandidata()
         {
@@ -38,6 +38,18 @@ namespace KonkursKandidataZadatak
             dataGridViewKandidati.CellEndEdit += dataGridViewKandidati_CellEndEdit_1;
 
 
+        }
+
+        private void FormSize()
+        {
+            int dodatnaSirina = 850;
+            int dodatnaVisina = 150;
+
+            int novaSirinaForme = dataGridViewKandidati.PreferredSize.Width + dodatnaSirina;
+            int novaVisinaForme = dataGridViewKandidati.PreferredSize.Height + dodatnaVisina;
+
+            this.MinimumSize = new Size(novaSirinaForme, novaVisinaForme);
+            this.MaximumSize = new Size(novaSirinaForme, novaVisinaForme);
         }
 
         //Metoda, pretraga po imenu, prezimenu i JMBG
