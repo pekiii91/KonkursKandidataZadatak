@@ -134,7 +134,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(102, 56);
             this.btnExport.TabIndex = 12;
-            this.btnExport.Text = "Export";
+            this.btnExport.Text = "Export Fajl";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 

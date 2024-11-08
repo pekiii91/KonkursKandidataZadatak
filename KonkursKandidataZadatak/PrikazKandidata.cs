@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace KonkursKandidataZadatak
@@ -95,20 +96,31 @@ namespace KonkursKandidataZadatak
         {
             try
             {
-                string queryStatus = "SELECT StatusID, NazivStatusa FROM StatusKandidata";
-                adapterStatusi = new SqlDataAdapter(queryStatus, konekcija);
-                dtStatusi = new DataTable();
-                adapterStatusi.Fill(dtStatusi);
-
-                //ComboBox kolona za status u DataGridView
+                foreach (DataGridViewColumn column in dataGridViewKandidati.Columns)
+                {
+                    if (column.Name == "StatusID")
+                    {
+                        dataGridViewKandidati.Columns.Remove(column);
+                        break;
+                    }
+                }
+                if (dtStatusi == null || dtStatusi.Rows.Count == 0)
+                {
+                    string queryStatus = "SELECT StatusID, NazivStatusa FROM StatusKandidata";
+                    adapterStatusi = new SqlDataAdapter(queryStatus, konekcija);
+                    dtStatusi = new DataTable();
+                    adapterStatusi.Fill(dtStatusi);
+                }
+              
                 DataGridViewComboBoxColumn statusColoumn = new DataGridViewComboBoxColumn
                 {
-                    DataPropertyName = "StatusID",
-                    HeaderText = "Status",
-                    DataSource = dtStatusi,
-                    DisplayMember = "NazivStatusa",
-                    ValueMember = "StatusID",
-                    Name = "StatusID",
+                        DataPropertyName = "StatusID",
+                        HeaderText = "Status",
+                        DataSource = dtStatusi,
+                        DisplayMember = "NazivStatusa",
+                        ValueMember = "StatusID",
+                        Name = "StatusID",
+                        
                 };
                 dataGridViewKandidati.Columns.Add(statusColoumn);
 

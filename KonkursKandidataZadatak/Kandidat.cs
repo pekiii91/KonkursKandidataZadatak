@@ -38,6 +38,7 @@ namespace KonkursKandidataZadatak
             comboBoxStatus.DataSource = dtStatusi;
             comboBoxStatus.DisplayMember = "NazivStatusa";
             comboBoxStatus.ValueMember = "StatusID";
+          
         }
        
         private void comboBoxStatusi_SelectedIndexChanged(object sender, EventArgs e)

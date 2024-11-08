@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrikazPriloga));
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,5 +61,6 @@
 
         #endregion
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using AcroPDFLib;
+using AxAcroPDFLib;
 
 namespace KonkursKandidataZadatak
 {
