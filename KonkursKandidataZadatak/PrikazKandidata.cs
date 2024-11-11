@@ -13,7 +13,6 @@ namespace KonkursKandidataZadatak
     public partial class PrikazKandidata : Form
     {
         Form1 form1;
-
         private SqlConnection konekcija;
         private SqlDataAdapter adapterKandidat;
         private SqlDataAdapter adapterStatusi;
@@ -22,7 +21,6 @@ namespace KonkursKandidataZadatak
 
         private void PrikazKandidata_Load(object sender, EventArgs e)
         {
-            FormSize();
         }
         public PrikazKandidata()
         {
@@ -38,19 +36,8 @@ namespace KonkursKandidataZadatak
             dataGridViewKandidati.RowPrePaint += dataGridViewKandidati_RowPrePaint;
             dataGridViewKandidati.CellEndEdit += dataGridViewKandidati_CellEndEdit_1;
 
-
-        }
-
-        private void FormSize()
-        {
-            int dodatnaSirina = 850;
-            int dodatnaVisina = 150;
-
-            int novaSirinaForme = dataGridViewKandidati.PreferredSize.Width + dodatnaSirina;
-            int novaVisinaForme = dataGridViewKandidati.PreferredSize.Height + dodatnaVisina;
-
-            this.MinimumSize = new Size(novaSirinaForme, novaVisinaForme);
-            this.MaximumSize = new Size(novaSirinaForme, novaVisinaForme);
+            this.Width = 1700;
+            this.Height = 580;
         }
 
         //Metoda, pretraga po imenu, prezimenu i JMBG

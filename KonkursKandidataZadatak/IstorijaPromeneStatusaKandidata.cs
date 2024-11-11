@@ -99,9 +99,18 @@ namespace KonkursKandidataZadatak
 
         private void btnDodajPromenuStatusa_Click(object sender, EventArgs e)
         {
-            int noviStatusID = Convert.ToInt32(dataGridViewIstorija.CurrentRow.Cells["NoviStatusID"].Value);
+            if (dataGridViewIstorija.CurrentRow != null &&
+                dataGridViewIstorija.CurrentRow.Cells["NoviStatusID"].Value != null)
+            {
+                int noviStatusID = Convert.ToInt32(dataGridViewIstorija.CurrentRow.Cells["NoviStatusID"].Value);
 
-            DodajPromenuStatusa(kandidatID, noviStatusID); // Prosledi kandidatID
+                DodajPromenuStatusa(kandidatID, noviStatusID); // Prosledi kandidatID
+            }
+            else
+            {
+                MessageBox.Show("Nije selektovan nijedan red ili status nije ispravno definisan.");
+            }
+           
         }
         private void DodajPromenuStatusa(int kandidatID, int noviStatusID)
         {

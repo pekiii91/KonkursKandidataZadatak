@@ -115,8 +115,26 @@ namespace KonkursKandidataZadatak
             }
             
         }
+        //Provera postojanja kandidata pre unosa priloga
+        public bool ProveriKandidatPostoji(int kandidatID)
+        {
+            string query = "SELECT COUNT(*) FROM Kandidat WHERE KandidatID = @KandidatID";
+            using (SqlCommand komanda = new SqlCommand(query, konekcija))
+            {
+                komanda.Parameters.AddWithValue("@KandidatID", kandidatID);
+                konekcija.Open();
+                int brojKandidat = (int)komanda.ExecuteScalar();
+                konekcija.Close();
+
+                return brojKandidat > 0;
+            }
+        }
         private void btnDodajPrilog_Click(object sender, EventArgs e)
         {
+            if(!ProveriKandidatPostoji(kandidatID))
+            {
+                MessageBox.Show("Kandidat sa zadatim ID-jem postoji.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             openFileDialog.Filter = "All Files (*.*)|*.*|PDF Files (*.pdf)|*.pdf|Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
 
 

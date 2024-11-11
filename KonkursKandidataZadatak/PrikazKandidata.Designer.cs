@@ -52,7 +52,7 @@
             this.dataGridViewKandidati.Name = "dataGridViewKandidati";
             this.dataGridViewKandidati.RowHeadersWidth = 51;
             this.dataGridViewKandidati.RowTemplate.Height = 24;
-            this.dataGridViewKandidati.Size = new System.Drawing.Size(1839, 212);
+            this.dataGridViewKandidati.Size = new System.Drawing.Size(1839, 355);
             this.dataGridViewKandidati.TabIndex = 0;
             this.dataGridViewKandidati.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKandidati_CellClick);
             this.dataGridViewKandidati.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKandidati_CellEndEdit_1);
@@ -60,7 +60,7 @@
             // 
             // btnOsveži
             // 
-            this.btnOsveži.Location = new System.Drawing.Point(151, 326);
+            this.btnOsveži.Location = new System.Drawing.Point(217, 480);
             this.btnOsveži.Name = "btnOsveži";
             this.btnOsveži.Size = new System.Drawing.Size(117, 56);
             this.btnOsveži.TabIndex = 5;
@@ -70,7 +70,7 @@
             // 
             // btnObriši
             // 
-            this.btnObriši.Location = new System.Drawing.Point(352, 326);
+            this.btnObriši.Location = new System.Drawing.Point(408, 480);
             this.btnObriši.Name = "btnObriši";
             this.btnObriši.Size = new System.Drawing.Size(115, 56);
             this.btnObriši.TabIndex = 6;
@@ -80,7 +80,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1723, 411);
+            this.btnOK.Location = new System.Drawing.Point(1703, 526);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(100, 40);
             this.btnOK.TabIndex = 7;
@@ -110,7 +110,7 @@
             // 
             // btnIzmeniKandidata
             // 
-            this.btnIzmeniKandidata.Location = new System.Drawing.Point(537, 326);
+            this.btnIzmeniKandidata.Location = new System.Drawing.Point(574, 480);
             this.btnIzmeniKandidata.Name = "btnIzmeniKandidata";
             this.btnIzmeniKandidata.Size = new System.Drawing.Size(145, 56);
             this.btnIzmeniKandidata.TabIndex = 10;
@@ -120,7 +120,7 @@
             // 
             // btnIstorijaPromenaStatusa
             // 
-            this.btnIstorijaPromenaStatusa.Location = new System.Drawing.Point(754, 326);
+            this.btnIstorijaPromenaStatusa.Location = new System.Drawing.Point(765, 480);
             this.btnIstorijaPromenaStatusa.Name = "btnIstorijaPromenaStatusa";
             this.btnIstorijaPromenaStatusa.Size = new System.Drawing.Size(145, 56);
             this.btnIstorijaPromenaStatusa.TabIndex = 11;
@@ -130,7 +130,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(965, 326);
+            this.btnExport.Location = new System.Drawing.Point(959, 480);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(102, 56);
             this.btnExport.TabIndex = 12;
@@ -147,7 +147,7 @@
             // 
             // btnPrilog
             // 
-            this.btnPrilog.Location = new System.Drawing.Point(1093, 326);
+            this.btnPrilog.Location = new System.Drawing.Point(1136, 480);
             this.btnPrilog.Name = "btnPrilog";
             this.btnPrilog.Size = new System.Drawing.Size(100, 56);
             this.btnPrilog.TabIndex = 13;
@@ -159,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1863, 463);
+            this.ClientSize = new System.Drawing.Size(1863, 583);
             this.Controls.Add(this.btnPrilog);
             this.Controls.Add(this.linkLabelDodatniLinkovi);
             this.Controls.Add(this.btnExport);
@@ -171,6 +171,7 @@
             this.Controls.Add(this.btnObriši);
             this.Controls.Add(this.btnOsveži);
             this.Controls.Add(this.dataGridViewKandidati);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PrikazKandidata";
             this.Text = "Prikaz Kandidata";

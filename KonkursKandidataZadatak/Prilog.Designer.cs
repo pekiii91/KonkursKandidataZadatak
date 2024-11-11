@@ -46,7 +46,7 @@
             // 
             // textBoxNazivPriloga
             // 
-            this.textBoxNazivPriloga.Location = new System.Drawing.Point(165, 50);
+            this.textBoxNazivPriloga.Location = new System.Drawing.Point(196, 50);
             this.textBoxNazivPriloga.Name = "textBoxNazivPriloga";
             this.textBoxNazivPriloga.Size = new System.Drawing.Size(205, 22);
             this.textBoxNazivPriloga.TabIndex = 2;
@@ -116,7 +116,7 @@
             // comboBoxTipPriloga
             // 
             this.comboBoxTipPriloga.FormattingEnabled = true;
-            this.comboBoxTipPriloga.Location = new System.Drawing.Point(165, 94);
+            this.comboBoxTipPriloga.Location = new System.Drawing.Point(196, 94);
             this.comboBoxTipPriloga.Name = "comboBoxTipPriloga";
             this.comboBoxTipPriloga.Size = new System.Drawing.Size(205, 24);
             this.comboBoxTipPriloga.TabIndex = 13;

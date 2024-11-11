@@ -237,9 +237,9 @@
             // 
             // pictureBoxSlika
             // 
-            this.pictureBoxSlika.Location = new System.Drawing.Point(756, 220);
+            this.pictureBoxSlika.Location = new System.Drawing.Point(712, 220);
             this.pictureBoxSlika.Name = "pictureBoxSlika";
-            this.pictureBoxSlika.Size = new System.Drawing.Size(193, 184);
+            this.pictureBoxSlika.Size = new System.Drawing.Size(237, 209);
             this.pictureBoxSlika.TabIndex = 24;
             this.pictureBoxSlika.TabStop = false;
             // 
