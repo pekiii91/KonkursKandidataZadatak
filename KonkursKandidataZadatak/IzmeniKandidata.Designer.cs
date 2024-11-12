@@ -245,19 +245,19 @@
             // 
             // btnBrisanjeSlike
             // 
-            this.btnBrisanjeSlike.Location = new System.Drawing.Point(578, 220);
+            this.btnBrisanjeSlike.Location = new System.Drawing.Point(562, 220);
             this.btnBrisanjeSlike.Name = "btnBrisanjeSlike";
-            this.btnBrisanjeSlike.Size = new System.Drawing.Size(103, 40);
+            this.btnBrisanjeSlike.Size = new System.Drawing.Size(119, 54);
             this.btnBrisanjeSlike.TabIndex = 25;
-            this.btnBrisanjeSlike.Text = "BrisanjeSlike";
+            this.btnBrisanjeSlike.Text = "Brisanje Slike";
             this.btnBrisanjeSlike.UseVisualStyleBackColor = true;
             this.btnBrisanjeSlike.Click += new System.EventHandler(this.btnBrisanjeSlike_Click);
             // 
             // btnUcitavanjeNoveSlike
             // 
-            this.btnUcitavanjeNoveSlike.Location = new System.Drawing.Point(578, 316);
+            this.btnUcitavanjeNoveSlike.Location = new System.Drawing.Point(562, 316);
             this.btnUcitavanjeNoveSlike.Name = "btnUcitavanjeNoveSlike";
-            this.btnUcitavanjeNoveSlike.Size = new System.Drawing.Size(103, 56);
+            this.btnUcitavanjeNoveSlike.Size = new System.Drawing.Size(119, 56);
             this.btnUcitavanjeNoveSlike.TabIndex = 26;
             this.btnUcitavanjeNoveSlike.Text = "Ucitavanja Nove Slike";
             this.btnUcitavanjeNoveSlike.UseVisualStyleBackColor = true;

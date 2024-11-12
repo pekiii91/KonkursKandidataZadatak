@@ -13,7 +13,7 @@ namespace KonkursKandidataZadatak
         Kandidat kandidatForm;
         PrikazKandidata prikazKandidata;
         private int? selectedKandidatID = null;
-        private int KandidatID;
+        private int kandidatID;
         private SqlConnection konekcija;
         private SqlDataAdapter adapterKandidat;
         private SqlDataReader adapterStatusi;
@@ -152,14 +152,14 @@ namespace KonkursKandidataZadatak
             return true;
         }
 
-        public IzmeniKandidata(int KandidatID, string ime, string prezime, decimal ocena, string jmbg,
+        public IzmeniKandidata(int kandidatID, string ime, string prezime, decimal ocena, string jmbg,
                                string email, DateTime datumRodjenja, string link, string telefon, string napomena)
         {
             InitializeComponent();
 
             konekcija = new SqlConnection("Data Source=DESKTOP-B3LH9NO;Initial Catalog=KonkursKandidatiDB;Integrated Security=True;Encrypt=False");
 
-            selectedKandidatID = KandidatID;
+            selectedKandidatID = kandidatID;
             textBoxIme.Text = ime;
             textBoxPrezime.Text = prezime;
             textBoxJMBG.Text = jmbg;
@@ -169,6 +169,7 @@ namespace KonkursKandidataZadatak
             textBoxTelefon.Text = telefon;
             textBoxNapomena.Text = napomena;
             numericUpDownOcena.Value = ocena;
+            UcitajSlikuKandidata(kandidatID);
 
         }
 
@@ -181,6 +182,8 @@ namespace KonkursKandidataZadatak
             {
                 using (SqlCommand komanda = new SqlCommand(query, konekcija))
                 {
+                    komanda.CommandTimeout = 1000;
+
                     komanda.Parameters.AddWithValue("@KandidatID", selectedKandidatID);
                     komanda.Parameters.AddWithValue("@Ime", textBoxIme.Text);
                     komanda.Parameters.AddWithValue("@Prezime", textBoxPrezime.Text);
@@ -236,6 +239,32 @@ namespace KonkursKandidataZadatak
             {
                 image.Save(ms, image.RawFormat);
                 return ms.ToArray();
+            }
+        }
+
+        public void UcitajSlikuKandidata(int kandidatID)
+        {
+            string query = "SELECT Slika FROM Kandidat WHERE KandidatID = @KandidatID";
+
+            using (SqlCommand komanda = new SqlCommand(query, konekcija))
+            {
+                komanda.Parameters.AddWithValue("@KandidatID", kandidatID);
+
+                konekcija.Open();
+                object slika = komanda.ExecuteScalar();
+                konekcija.Close();
+
+                if (slika != DBNull.Value && slika is byte[] slikaBytes)
+                {
+                    using (MemoryStream ms = new MemoryStream(slikaBytes))
+                    {
+                        pictureBoxSlika.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pictureBoxSlika.Image = null; 
+                }
             }
         }
     }
