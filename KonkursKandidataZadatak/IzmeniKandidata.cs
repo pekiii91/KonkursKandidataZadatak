@@ -117,77 +117,45 @@ namespace KonkursKandidataZadatak
             errorProviderIzmenaKandidata.Clear();
         }
 
+        private bool ValidacijaPolja(Control control, Func<Control, bool> validationRule, string errorMessage)
+        {
+            if (!validationRule(control))
+            {
+                errorProviderIzmenaKandidata.SetError(control, errorMessage);
+                if (control.Focused == false)
+                    control.Focus();
+                return false;
+            }
+            else
+            {
+                errorProviderIzmenaKandidata.SetError(control, "");
+                return true;
+            }
+        }
+
         // Validacija obaveznih polja
         public bool Validacija()
         {
             bool isValid = true;
 
-            //validacija imena
-            if (string.IsNullOrEmpty(textBoxIme.Text))
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxIme, "Ime je obavezno.");
-                isValid = false;
-            }
-            else
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxIme, ""); //ukloni gresku
-            }
 
-            //validacija prezimena
-            if (string.IsNullOrEmpty(textBoxPrezime.Text))
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxPrezime, "Prezime je obavezno.");
-                isValid = false;
-            }
-            else
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxPrezime, "");
-            }
+            // Validacija imena
+            isValid &= ValidacijaPolja(textBoxIme, c => !string.IsNullOrEmpty(c.Text), "Ime je obavezno.");
 
-            //validacija JMBG-a
-            if (string.IsNullOrEmpty(textBoxJMBG.Text))
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "JMBG je obavezan.");
-                isValid = false;
-            }
-            else if (textBoxJMBG.Text.Length != 13)
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "JMBG mora imati 13 cifara.");
-                isValid = false;
-            }
-            else
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "");
-            }
+            // Validacija prezimena
+            isValid &= ValidacijaPolja(textBoxPrezime, c => !string.IsNullOrEmpty(c.Text), "Prezime je obavezno.");
 
-            //validacija datuma rodjenja
-            if (dateTimePickerDatumRodj.Value == null)
-            {
-                errorProviderIzmenaKandidata.SetError(dateTimePickerDatumRodj, "Datum rođenja je obavezan.");
-                isValid = false;
-            }
-            else
-            {
-                errorProviderIzmenaKandidata.SetError(dateTimePickerDatumRodj, "");
-            }
+            // Validacija JMBG-a
+            isValid &= ValidacijaPolja(textBoxJMBG, c => c.Text.Length == 13 && long.TryParse(c.Text, out _),
+                "JMBG mora imati tačno 13 cifara.");
 
+            // Validacija datuma rođenja
+            isValid &= ValidacijaPolja(dateTimePickerDatumRodj, c => ((DateTimePicker)c).Value != null,
+                "Datum rođenja je obavezan.");
 
-            //validacija email
-            if (string.IsNullOrEmpty(textBoxEmail.Text))
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxEmail, "Email je obavezan.");
-                isValid = false;
-            }
-            else if (!textBoxEmail.Text.Contains("@"))
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxEmail, "Unesite validnu email adresu.");
-                isValid = false;
-            }
-            else
-            {
-                errorProviderIzmenaKandidata.SetError(textBoxEmail, "");
-            }
-
+            // Validacija emaila
+            isValid &= ValidacijaPolja(textBoxEmail, c => c.Text.Contains("@") && c.Text.Contains("."),
+                "Unesite validnu email adresu.");
 
             return isValid;
         }

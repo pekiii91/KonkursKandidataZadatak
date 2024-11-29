@@ -119,74 +119,7 @@ namespace KonkursKandidataZadatak
                 "Unesite validnu email adresu.");
 
             return isValid;
-            /*  //validacija imena
-              if (string.IsNullOrEmpty(textBoxIme.Text) || textBoxIme.Text.Length<2)
-              {
-                  errorProviderKandidat.SetError(textBoxIme, "Ime mora sadrzati bar 2 karaktera..");
-                  isValid = false; 
-              }
-              else
-              {
-                  errorProviderKandidat.SetError(textBoxIme, ""); //ukloni gresku
-              }
-
-              //validacija prezimena
-              if (string.IsNullOrEmpty(textBoxPrezime.Text) || textBoxPrezime.Text.Length < 2)
-              {
-                  errorProviderKandidat.SetError(textBoxPrezime, "Prezime mora sadrzati barem 2 karaktera.");
-                  isValid = false;
-              }
-              else
-              {
-                  errorProviderKandidat.SetError(textBoxPrezime, "");
-              }
-
-              //validacija JMBG-a
-              if (string.IsNullOrEmpty(textBoxJMBG.Text))
-              {
-                  errorProviderKandidat.SetError(textBoxJMBG, "JMBG je obavezan.");
-                  isValid = false;
-              }
-              else if (!Regex.IsMatch(textBoxJMBG.Text, @"^\d{13}$"))
-              {
-                  errorProviderKandidat.SetError(textBoxJMBG, "JMBG mora sadržati tačno 13 cifara.");
-                  isValid = false;
-              }
-              else
-              {
-                  errorProviderKandidat.SetError(textBoxJMBG, "");
-              }
-
-              //validacija datuma rodjenja
-              if (dateTimePickerDatumRodj.Value > DateTime.Now)
-              {
-                  errorProviderKandidat.SetError(dateTimePickerDatumRodj, "Datum rođenja ne moze biti u buducnosti.");
-                  isValid = false;
-              }
-              else
-              {
-                  errorProviderKandidat.SetError(dateTimePickerDatumRodj, "");
-              }
-
-
-              //validacija email
-              if (string.IsNullOrEmpty(textBoxEmail.Text))
-              {
-                  errorProviderKandidat.SetError(textBoxEmail, "Email je obavezan.");
-                  isValid = false;
-              }
-              else if (!Regex.IsMatch(textBoxEmail.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-              {
-                  errorProviderKandidat.SetError(textBoxEmail, "Unesite ispravan email.");
-                  isValid = false;
-              }
-              else
-              {
-                  errorProviderKandidat.SetError(textBoxEmail, "");
-              }
-
-
-              return isValid; */
+          
         }
 
         // Metoda koja proverava validnost JMBG i popunjava datum rodjenja
@@ -377,7 +310,6 @@ namespace KonkursKandidataZadatak
                 }
             }
         }
-
         private byte[] PretvaranjeSlike(string filePath)
         {
             return File.ReadAllBytes(filePath);
