@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelIme = new System.Windows.Forms.Label();
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelJMBG = new System.Windows.Forms.Label();
@@ -56,8 +57,10 @@
             this.pictureBoxSlika = new System.Windows.Forms.PictureBox();
             this.btnUcitavanjeSlike = new System.Windows.Forms.Button();
             this.btnBrisanjeSlike = new System.Windows.Forms.Button();
+            this.errorProviderKandidat = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOcena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKandidat)).BeginInit();
             this.SuspendLayout();
             // 
             // labelIme
@@ -305,6 +308,10 @@
             this.btnBrisanjeSlike.UseVisualStyleBackColor = true;
             this.btnBrisanjeSlike.Click += new System.EventHandler(this.btnBrisanjeSlike_Click);
             // 
+            // errorProviderKandidat
+            // 
+            this.errorProviderKandidat.ContainerControl = this;
+            // 
             // Kandidat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,6 +352,7 @@
             this.Load += new System.EventHandler(this.Kandidat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOcena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKandidat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,5 +388,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSlika;
         private System.Windows.Forms.Button btnUcitavanjeSlike;
         private System.Windows.Forms.Button btnBrisanjeSlike;
+        private System.Windows.Forms.ErrorProvider errorProviderKandidat;
     }
 }

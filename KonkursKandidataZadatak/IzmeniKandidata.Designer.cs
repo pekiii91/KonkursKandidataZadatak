@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelIme = new System.Windows.Forms.Label();
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelJMBG = new System.Windows.Forms.Label();
@@ -52,8 +53,10 @@
             this.pictureBoxSlika = new System.Windows.Forms.PictureBox();
             this.btnBrisanjeSlike = new System.Windows.Forms.Button();
             this.btnUcitavanjeNoveSlike = new System.Windows.Forms.Button();
+            this.errorProviderIzmenaKandidata = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOcena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIzmenaKandidata)).BeginInit();
             this.SuspendLayout();
             // 
             // labelIme
@@ -263,6 +266,10 @@
             this.btnUcitavanjeNoveSlike.UseVisualStyleBackColor = true;
             this.btnUcitavanjeNoveSlike.Click += new System.EventHandler(this.btnUcitavanjeNoveSlike_Click);
             // 
+            // errorProviderIzmenaKandidata
+            // 
+            this.errorProviderIzmenaKandidata.ContainerControl = this;
+            // 
             // IzmeniKandidata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -299,6 +306,7 @@
             this.Load += new System.EventHandler(this.IzmeniKandidata_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOcena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIzmenaKandidata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +338,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSlika;
         private System.Windows.Forms.Button btnBrisanjeSlike;
         private System.Windows.Forms.Button btnUcitavanjeNoveSlike;
+        private System.Windows.Forms.ErrorProvider errorProviderIzmenaKandidata;
     }
 }

@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace KonkursKandidataZadatak
@@ -74,41 +75,118 @@ namespace KonkursKandidataZadatak
             }
         }
 
-        // Validacija obaveznih polja
+
+        private bool ValidacijaPolja(Control control, Func<Control, bool> validationRule, string errorMessage)
+        {
+            if(!validationRule(control))
+            {
+                errorProviderKandidat.SetError(control, errorMessage);
+                if (control.Focused == false)
+                    control.Focus();
+                return false;
+            }
+            else
+            {
+                errorProviderKandidat.SetError(control, "");
+                return true;
+            }
+        }
+
+
+
+        // Validacija obaveznih polja (error provider i mandatory)
         public bool Validacija()
         {
-            if (string.IsNullOrEmpty(textBoxIme.Text))
-            {
-                MessageBox.Show("Morate uneti ime", "Poruka");
-                textBoxIme.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(textBoxPrezime.Text))
-            {
-                MessageBox.Show("Morate uneti prezime", "Poruka");
-                textBoxPrezime.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(textBoxJMBG.Text))
-            {
-                MessageBox.Show("Morate uneti jmbg", "Poruka");
-                textBoxJMBG.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(dateTimePickerDatumRodj.Text))
-            {
-                MessageBox.Show("Morate uneti datum rodjenja", "Poruka");
-                dateTimePickerDatumRodj.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(textBoxEmail.Text))
-            {
-                MessageBox.Show("Morate uneti email", "Poruka");
-                textBoxEmail.Focus();
-                return false;
-            }
+            bool isValid = true;
 
-            return true;
+
+            // Validacija imena
+            isValid &= ValidacijaPolja(textBoxIme, c => !string.IsNullOrEmpty(c.Text), "Ime je obavezno.");
+
+            // Validacija prezimena
+            isValid &= ValidacijaPolja(textBoxPrezime, c => !string.IsNullOrEmpty(c.Text), "Prezime je obavezno.");
+
+            // Validacija JMBG-a
+            isValid &= ValidacijaPolja(textBoxJMBG, c => c.Text.Length == 13 && long.TryParse(c.Text, out _),
+                "JMBG mora imati tačno 13 cifara.");
+
+            // Validacija datuma rođenja
+            isValid &= ValidacijaPolja(dateTimePickerDatumRodj, c => ((DateTimePicker)c).Value != null,
+                "Datum rođenja je obavezan.");
+
+            // Validacija emaila
+            isValid &= ValidacijaPolja(textBoxEmail, c => c.Text.Contains("@") && c.Text.Contains("."),
+                "Unesite validnu email adresu.");
+
+            return isValid;
+            /*  //validacija imena
+              if (string.IsNullOrEmpty(textBoxIme.Text) || textBoxIme.Text.Length<2)
+              {
+                  errorProviderKandidat.SetError(textBoxIme, "Ime mora sadrzati bar 2 karaktera..");
+                  isValid = false; 
+              }
+              else
+              {
+                  errorProviderKandidat.SetError(textBoxIme, ""); //ukloni gresku
+              }
+
+              //validacija prezimena
+              if (string.IsNullOrEmpty(textBoxPrezime.Text) || textBoxPrezime.Text.Length < 2)
+              {
+                  errorProviderKandidat.SetError(textBoxPrezime, "Prezime mora sadrzati barem 2 karaktera.");
+                  isValid = false;
+              }
+              else
+              {
+                  errorProviderKandidat.SetError(textBoxPrezime, "");
+              }
+
+              //validacija JMBG-a
+              if (string.IsNullOrEmpty(textBoxJMBG.Text))
+              {
+                  errorProviderKandidat.SetError(textBoxJMBG, "JMBG je obavezan.");
+                  isValid = false;
+              }
+              else if (!Regex.IsMatch(textBoxJMBG.Text, @"^\d{13}$"))
+              {
+                  errorProviderKandidat.SetError(textBoxJMBG, "JMBG mora sadržati tačno 13 cifara.");
+                  isValid = false;
+              }
+              else
+              {
+                  errorProviderKandidat.SetError(textBoxJMBG, "");
+              }
+
+              //validacija datuma rodjenja
+              if (dateTimePickerDatumRodj.Value > DateTime.Now)
+              {
+                  errorProviderKandidat.SetError(dateTimePickerDatumRodj, "Datum rođenja ne moze biti u buducnosti.");
+                  isValid = false;
+              }
+              else
+              {
+                  errorProviderKandidat.SetError(dateTimePickerDatumRodj, "");
+              }
+
+
+              //validacija email
+              if (string.IsNullOrEmpty(textBoxEmail.Text))
+              {
+                  errorProviderKandidat.SetError(textBoxEmail, "Email je obavezan.");
+                  isValid = false;
+              }
+              else if (!Regex.IsMatch(textBoxEmail.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+              {
+                  errorProviderKandidat.SetError(textBoxEmail, "Unesite ispravan email.");
+                  isValid = false;
+              }
+              else
+              {
+                  errorProviderKandidat.SetError(textBoxEmail, "");
+              }
+
+
+              return isValid; */
         }
 
         // Metoda koja proverava validnost JMBG i popunjava datum rodjenja
@@ -160,6 +238,8 @@ namespace KonkursKandidataZadatak
             numericUpDownOcena.Value = 1;
             comboBoxStatus.SelectedIndex = -1;
             
+            //Resetovanje Error Provider-a
+            errorProviderKandidat.Clear();
         }
 
         private void textBoxIme_KeyPress(object sender, KeyPressEventArgs e)
@@ -236,6 +316,12 @@ namespace KonkursKandidataZadatak
 
         private void buttonDodajKandidata_Click(object sender, EventArgs e)
         {
+            if (!Validacija())
+            {
+                MessageBox.Show("Molimo vas da ispravite greske pre nego sto nastavite.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             string query = "INSERT INTO Kandidat (Ime, Prezime, JMBG, DatumRodjenja, Email, DodatniLinkovi, Telefon, Napomena, LastUpdate, Slika, Ocena, StatusID)" +
                               "VALUES (@Ime, @Prezime, @JMBG, @DatumRodjenja, @Email, @DodatniLinkovi, @Telefon, @Napomena, @LastUpdate, @Slika, @Ocena, @StatusID)";
@@ -331,7 +417,7 @@ namespace KonkursKandidataZadatak
                     MessageBox.Show("Slika je uspesno obrisane iz baze podataka.", "Super", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 MessageBox.Show("Doslo je do greske prilikom brisanja slike: " + ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -341,5 +427,6 @@ namespace KonkursKandidataZadatak
                     konekcija.Close();
             }
         }
+
     }
 }

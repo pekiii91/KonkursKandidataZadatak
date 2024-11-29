@@ -113,43 +113,83 @@ namespace KonkursKandidataZadatak
             richTextBoxDodatniLinkovi.Clear();
             textBoxTelefon.Clear();
             numericUpDownOcena.Value = 1;
+
+            errorProviderIzmenaKandidata.Clear();
         }
 
         // Validacija obaveznih polja
         public bool Validacija()
         {
+            bool isValid = true;
+
+            //validacija imena
             if (string.IsNullOrEmpty(textBoxIme.Text))
             {
-                MessageBox.Show("Morate uneti ime", "Poruka");
-                textBoxIme.Focus();
-                return false;
+                errorProviderIzmenaKandidata.SetError(textBoxIme, "Ime je obavezno.");
+                isValid = false;
             }
-            if (string.IsNullOrEmpty(textBoxPrezime.Text))
+            else
             {
-                MessageBox.Show("Morate uneti prezime", "Poruka");
-                textBoxPrezime.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(textBoxJMBG.Text))
-            {
-                MessageBox.Show("Morate uneti jmbg", "Poruka");
-                textBoxJMBG.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(dateTimePickerDatumRodj.Text))
-            {
-                MessageBox.Show("Morate uneti datum rodjenja", "Poruka");
-                dateTimePickerDatumRodj.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(textBoxEmail.Text))
-            {
-                MessageBox.Show("Morate uneti email", "Poruka");
-                textBoxEmail.Focus();
-                return false;
+                errorProviderIzmenaKandidata.SetError(textBoxIme, ""); //ukloni gresku
             }
 
-            return true;
+            //validacija prezimena
+            if (string.IsNullOrEmpty(textBoxPrezime.Text))
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxPrezime, "Prezime je obavezno.");
+                isValid = false;
+            }
+            else
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxPrezime, "");
+            }
+
+            //validacija JMBG-a
+            if (string.IsNullOrEmpty(textBoxJMBG.Text))
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "JMBG je obavezan.");
+                isValid = false;
+            }
+            else if (textBoxJMBG.Text.Length != 13)
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "JMBG mora imati 13 cifara.");
+                isValid = false;
+            }
+            else
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxJMBG, "");
+            }
+
+            //validacija datuma rodjenja
+            if (dateTimePickerDatumRodj.Value == null)
+            {
+                errorProviderIzmenaKandidata.SetError(dateTimePickerDatumRodj, "Datum rođenja je obavezan.");
+                isValid = false;
+            }
+            else
+            {
+                errorProviderIzmenaKandidata.SetError(dateTimePickerDatumRodj, "");
+            }
+
+
+            //validacija email
+            if (string.IsNullOrEmpty(textBoxEmail.Text))
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxEmail, "Email je obavezan.");
+                isValid = false;
+            }
+            else if (!textBoxEmail.Text.Contains("@"))
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxEmail, "Unesite validnu email adresu.");
+                isValid = false;
+            }
+            else
+            {
+                errorProviderIzmenaKandidata.SetError(textBoxEmail, "");
+            }
+
+
+            return isValid;
         }
 
         public IzmeniKandidata(int kandidatID, string ime, string prezime, decimal ocena, string jmbg,
@@ -175,6 +215,13 @@ namespace KonkursKandidataZadatak
 
         private void btnSačuvaj_Click(object sender, EventArgs e)
         {
+
+            if (!Validacija())
+            {
+                MessageBox.Show("Molimo vas da ispravite greške pre nego što nastavite.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string query = "UPDATE Kandidat SET Ime = @Ime, Prezime = @Prezime, JMBG = @JMBG, DatumRodjenja = @DatumRodjenja, " +
                        "Email = @Email, DodatniLinkovi = @DodatniLinkovi, Telefon = @Telefon, Napomena = @Napomena, Ocena = @Ocena, Slika = @Slika, LastUpdate = @LastUpdate WHERE KandidatID = @KandidatID";
 
